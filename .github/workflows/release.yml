@@ -33,11 +33,22 @@ jobs:
         run: |
           powershell Compress-Archive -Path "dist\PortKiller\*" -DestinationPath "PortKiller-windows.zip" -Force
 
+      - name: Install Inno Setup
+        uses: Minionguyjpro/setup-innosetup@v1.1
+        with:
+          innosetup-version: '6.4.2'
+
+      - name: Build Installer
+        run: |
+          iscc installer.iss
+
       - name: Create Release
         if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2
         with:
-          files: PortKiller-windows.zip
+          files:
+            - PortKiller-windows.zip
+            - output/PortKiller-Setup.exe
           draft: false
 
       - name: Upload artifact (for manual workflow_dispatch)
@@ -45,4 +56,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: PortKiller-windows
-          path: PortKiller-windows.zip
+          path:
+            - PortKiller-windows.zip
+            - output/PortKiller-Setup.exe
