@@ -6,6 +6,9 @@ on:
       - 'v*'  # when a tag like v1.0.0 is pushed
   workflow_dispatch:  # allow manual trigger
 
+permissions:
+  contents: write  # required for creating releases
+
 jobs:
   build:
     runs-on: windows-latest
@@ -32,12 +35,10 @@ jobs:
 
       - name: Create Release
         if: startsWith(github.ref, 'refs/tags/')
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           files: PortKiller-windows.zip
           draft: false
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload artifact (for manual workflow_dispatch)
         if: github.event_name == 'workflow_dispatch'
