@@ -34,9 +34,7 @@ jobs:
           powershell Compress-Archive -Path "dist\PortKiller\*" -DestinationPath "PortKiller-windows.zip" -Force
 
       - name: Install Inno Setup
-        uses: Minionguyjpro/setup-innosetup@v1.1
-        with:
-          innosetup-version: '6.4.2'
+        run: choco install innosetup -y
 
       - name: Build Installer
         run: |
