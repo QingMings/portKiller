@@ -4,7 +4,7 @@
 AppName=PortKiller
 AppVersion=1.0.0
 AppPublisher=QingMings
-AppURL=https://github.com/QingMings/portKiller
+
 DefaultDirName={pf}\PortKiller
 DefaultGroupName=PortKiller
 UninstallDisplayIcon={app}\PortKiller.exe
