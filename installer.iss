@@ -19,6 +19,7 @@ Name: "{commondesktop}\PortKiller"; Filename: "{app}\PortKiller.exe"; IconFilena
 
 [Files]
 Source: "dist\PortKiller\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "app.ico"; DestDir: "{app}"; Flags: ignoreversion
 
 [Run]
 Filename: "{app}\PortKiller.exe"; Description: "Launch PortKiller"; Flags: postinstall nowait skipifsilent
