@@ -46,9 +46,7 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2
         with:
-          files:
-            - PortKiller-windows.zip
-            - output/PortKiller-Setup.exe
+          files: PortKiller-windows.zip,output/PortKiller-Setup.exe
           draft: false
 
       - name: Upload artifact (for manual workflow_dispatch)
@@ -56,6 +54,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: PortKiller-windows
-          path:
-            - PortKiller-windows.zip
-            - output/PortKiller-Setup.exe
+          path: |
+            PortKiller-windows.zip
+            output/PortKiller-Setup.exe
